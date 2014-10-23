@@ -27,18 +27,16 @@ class App.Views.Property extends Marionette.ItemView
 
 
 class App.Views.Properties extends Marionette.CompositeView
+  el: '#main'
   template: JST['properties']
-  itemView: App.Views.Property
-  itemViewContainer: '#properties'
-  initialize: ->
-#    super
-    @collection = new App.Collections.Properties
-#    @listenTo(@collection, 'add', @addItem)
+  childView: App.Views.Property
+  childViewContainer: '#properties'
+
+  onRender: ->
     @collection.fetch()
 
 $ ->
-#  properties = new App.Collections.Properties
-#  properties.fetch()
+  properties = new App.Collections.Properties()
   propertiesView = new App.Views.Properties
-#    collection: properties
-  $('#main').html(propertiesView.render().el)
+    collection: properties
+  propertiesView.render()
