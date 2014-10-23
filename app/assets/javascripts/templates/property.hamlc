@@ -1,0 +1,8 @@
+%span<>
+  = @address
+,
+%span
+  = @property_type
+.pull-right
+  %button.text-danger.remove{type: 'button'} &times;
+.clearfix
